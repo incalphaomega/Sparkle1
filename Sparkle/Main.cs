@@ -36,6 +36,7 @@ namespace Sparkle
         {
             consoleFont = ContentLoader.Load<SpriteFont>("Console");
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            consoleFont.Spacing = 1;
         }
 
         protected override void UnloadContent()
