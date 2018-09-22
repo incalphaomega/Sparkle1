@@ -54,6 +54,7 @@ namespace Sparkle
             }
 
             text.Update();
+            jgvkhgcvhgv
 
             KeysStroke.oldUpdate();
             base.Update(gameTime);
