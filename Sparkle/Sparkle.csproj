@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Handlers\ContentLoader.cs" />
     <Compile Include="Handlers\KeysStroke.cs" />
+    <Compile Include="Handlers\TextEditor.cs" />
     <Compile Include="Handlers\TextInput.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Program.cs" />
