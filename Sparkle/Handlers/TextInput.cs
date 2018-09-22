@@ -42,6 +42,10 @@ namespace Sparkle.Handlers
             {
                 text += " ";
             }
+            else if (keyPressed(Keys.Enter))
+            {
+                text += "\n";
+            }
             else if (keyPressed(Keys.Back) && text.Length > 0)
             {
                 text = text.Remove(text.Length - 1);
