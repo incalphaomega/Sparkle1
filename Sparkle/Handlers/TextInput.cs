@@ -16,7 +16,7 @@ namespace Sparkle.Handlers
 {
     class TextInput
     {
-        Vector2 position;
+        Layout currentLayout;
 
         public enum Layout
         {
@@ -24,27 +24,17 @@ namespace Sparkle.Handlers
             enUS = 1033
         }
 
-        Layout currentLayout;
-
-        public string text { get; set; }
-
-        public TextInput(Vector2 position)
+        public TextInput()
         {
-            this.position = position;
-            text = "";
         }
 
-        public void Update()
+        public void Update(StringBuilder text)
         {
             currentLayout = (Layout)InputLanguage.CurrentInputLanguage.Culture.KeyboardLayoutId;
 
             if (keyPressed(Keys.Space))
             {
-                text += " ";
-            }
-            else if (keyPressed(Keys.Back) && text.Length > 0)
-            {
-                text = text.Remove(text.Length - 1);
+               text.Append(" ");
             }
             else if (isKeyDown(Keys.LeftShift) || isKeyDown(Keys.RightShift))
             {
@@ -55,11 +45,11 @@ namespace Sparkle.Handlers
                     {
                         if (KState.CapsLock)
                         {
-                            text += getAlterSymbol(key).ToLower();
+                            text.Append(getAlterSymbol(key).ToLower());
                         }
                         else
                         {
-                            text += getAlterSymbol(key);
+                            text.Append(getAlterSymbol(key));
                         }
                     }
                 }
@@ -73,23 +63,18 @@ namespace Sparkle.Handlers
                     {
                         if (KState.CapsLock)
                         {
-                            text += getSymbol(key).ToUpper();
+                            text.Append(getSymbol(key).ToUpper());
                         }
                         else
                         {
-                            text += getSymbol(key);
+                            text.Append(getSymbol(key));
                         }
                     }
                 }
             }
         }
 
-        public void Draw(SpriteBatch s)
-        {
-            s.DrawString(Main.consoleFont, text, position, Color.Black);
-        }
-
-        public string getSymbol(Keys key)
+        string getSymbol(Keys key)
         {
             switch (key)
             {
@@ -428,7 +413,7 @@ namespace Sparkle.Handlers
             }
         }
 
-        public string getAlterSymbol(Keys key)
+        string getAlterSymbol(Keys key)
         {
             switch (key)
             {

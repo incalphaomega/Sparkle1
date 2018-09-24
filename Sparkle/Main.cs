@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using Sparkle.Handlers;
+using Sparkle.GUI;
+
 using static Sparkle.Handlers.KeysStroke;
 
 namespace Sparkle
@@ -17,7 +19,7 @@ namespace Sparkle
 
         public static SpriteFont consoleFont;
 
-        TextInput text;
+        TextBox textBox;
 
         public Main()
         {
@@ -28,7 +30,7 @@ namespace Sparkle
 
         protected override void Initialize()
         {
-            text = new TextInput(new Vector2(5));
+            textBox = new TextBox(new Vector2(200,200));
             base.Initialize();
         }
 
@@ -53,7 +55,7 @@ namespace Sparkle
                 Exit();
             }
 
-            text.Update();
+            textBox.Update();
 
             KeysStroke.oldUpdate();
             base.Update(gameTime);
@@ -65,7 +67,7 @@ namespace Sparkle
 
             spriteBatch.Begin();
 
-            text.Draw(spriteBatch);
+            textBox.Draw(spriteBatch);
 
             spriteBatch.End();
 

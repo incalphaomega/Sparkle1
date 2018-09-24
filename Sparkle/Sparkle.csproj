@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GUI\TextBox.cs" />
     <Compile Include="Handlers\ContentLoader.cs" />
     <Compile Include="Handlers\KeysStroke.cs" />
     <Compile Include="Handlers\TextEditor.cs" />
