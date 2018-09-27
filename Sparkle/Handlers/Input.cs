@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace Sparkle.Handlers
 {
-    class KeysStroke
+    class Input
     {
         public static KeyboardState oldKState, KState;
         public static MouseState oldMState, MState;
 
+        public static Point mousePoint;
+        public static Vector2 mousePosition;
         public enum Buttons { Left, Right, Middle }
 
         public static bool isMouseMoving;
@@ -20,6 +23,9 @@ namespace Sparkle.Handlers
         {
             KState = Keyboard.GetState();
             MState = Mouse.GetState();
+
+            mousePoint = new Point(MState.X, MState.Y);
+            mousePosition = new Vector2(MState.X, MState.Y); 
 
             if (oldMState.Position != MState.Position)
             {

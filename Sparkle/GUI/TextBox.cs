@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 
-using static Sparkle.Handlers.KeysStroke;
+using static Sparkle.Handlers.Input;
 
 namespace Sparkle.GUI
 {

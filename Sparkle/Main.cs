@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Sparkle.Handlers;
 using Sparkle.GUI;
 
-using static Sparkle.Handlers.KeysStroke;
+using static Sparkle.Handlers.Input;
 
 namespace Sparkle
 {
@@ -21,6 +21,7 @@ namespace Sparkle
 
         TextBox textBox;
         TextBox textBox2;
+        ItemCase item; 
 
         public Main()
         {
@@ -34,6 +35,7 @@ namespace Sparkle
         {
             textBox = new TextBox(new Vector2(200));
             textBox2 = new TextBox(new Vector2(200, 230));
+            item = new ItemCase(new Vector2(200));
             base.Initialize();
         }
 
@@ -44,6 +46,7 @@ namespace Sparkle
             consoleFont.Spacing = 1;
 
             TextBox.LoadContent();
+            ItemCase.LoadContent();
         }
 
         protected override void UnloadContent()
@@ -53,7 +56,7 @@ namespace Sparkle
 
         protected override void Update(GameTime gameTime)
         {
-            KeysStroke.Update();
+            Input.Update();
 
             if (keyPressed(Keys.Escape))
             {
@@ -62,9 +65,14 @@ namespace Sparkle
 
             textBox.Update();
             textBox2.Update();
+            item.Update();
+            
 
-            KeysStroke.oldUpdate();
+            Input.oldUpdate();
             base.Update(gameTime);
+            
+
+          
         }
 
         protected override void Draw(GameTime gameTime)
@@ -75,6 +83,7 @@ namespace Sparkle
 
             textBox.Draw(spriteBatch, gameTime);
             textBox2.Draw(spriteBatch, gameTime);
+            item.Draw(spriteBatch);
 
             spriteBatch.End();
 
