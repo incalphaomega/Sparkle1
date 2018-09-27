@@ -21,7 +21,7 @@ namespace Sparkle.Handlers
             KState = Keyboard.GetState();
             MState = Mouse.GetState();
 
-            if(oldMState.Position != MState.Position)
+            if (oldMState.Position != MState.Position)
             {
                 isMouseMoving = true;
             }
@@ -252,6 +252,18 @@ namespace Sparkle.Handlers
                     }
                 default:
                     return false;
+            }
+        }
+
+        public static bool buttonPressed(Buttons button)
+        {
+            if (isButtonDown(button) && wasButtonUp(button))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

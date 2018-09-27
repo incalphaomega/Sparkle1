@@ -20,17 +20,20 @@ namespace Sparkle
         public static SpriteFont consoleFont;
 
         TextBox textBox;
+        TextBox textBox2;
 
         public Main()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             content = Content;
+            IsMouseVisible = true;
         }
 
         protected override void Initialize()
         {
-            textBox = new TextBox(new Vector2(200,200));
+            textBox = new TextBox(new Vector2(200));
+            textBox2 = new TextBox(new Vector2(200, 230));
             base.Initialize();
         }
 
@@ -39,6 +42,8 @@ namespace Sparkle
             consoleFont = ContentLoader.Load<SpriteFont>("Console");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             consoleFont.Spacing = 1;
+
+            TextBox.LoadContent();
         }
 
         protected override void UnloadContent()
@@ -56,6 +61,7 @@ namespace Sparkle
             }
 
             textBox.Update();
+            textBox2.Update();
 
             KeysStroke.oldUpdate();
             base.Update(gameTime);
@@ -63,15 +69,18 @@ namespace Sparkle
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
 
-            textBox.Draw(spriteBatch);
+            textBox.Draw(spriteBatch, gameTime);
+            textBox2.Draw(spriteBatch, gameTime);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
+
+            
         }
     }
 }
