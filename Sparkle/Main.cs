@@ -7,6 +7,8 @@ using Sparkle.Handlers;
 using Sparkle.GUI;
 
 using static Sparkle.Handlers.Input;
+using System.Collections.Generic;
+using System;
 
 namespace Sparkle
 {
@@ -19,9 +21,10 @@ namespace Sparkle
 
         public static SpriteFont consoleFont;
 
+        public static List<string> info;
+
         TextBox textBox;
-        TextBox textBox2;
-        ItemCase item; 
+        ItemCase item;
 
         public Main()
         {
@@ -29,13 +32,16 @@ namespace Sparkle
             Content.RootDirectory = "Content";
             content = Content;
             IsMouseVisible = true;
+            Window.AllowUserResizing = true;
         }
 
         protected override void Initialize()
         {
             textBox = new TextBox(new Vector2(200));
-            textBox2 = new TextBox(new Vector2(200, 230));
             item = new ItemCase(new Vector2(200));
+
+            info = new List<string>();
+
             base.Initialize();
         }
 
@@ -64,17 +70,14 @@ namespace Sparkle
             }
 
             textBox.Update();
-            textBox2.Update();
             item.Update();
-            
+
 
             Input.oldUpdate();
             base.Update(gameTime);
-            
-
-          
         }
 
+        int i;
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -82,14 +85,18 @@ namespace Sparkle
             spriteBatch.Begin();
 
             textBox.Draw(spriteBatch, gameTime);
-            textBox2.Draw(spriteBatch, gameTime);
             item.Draw(spriteBatch);
+
+            i = 0;
+            foreach (var s in info)
+            {
+                spriteBatch.DrawString(consoleFont, s, new Vector2(5, 0 + consoleFont.MeasureString("W").Y * i), Color.White);
+                i++;
+            }
 
             spriteBatch.End();
 
             base.Draw(gameTime);
-
-            
         }
     }
 }

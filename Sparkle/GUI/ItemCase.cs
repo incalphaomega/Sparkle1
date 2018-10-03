@@ -11,34 +11,35 @@ namespace Sparkle.GUI
 {
     class ItemCase
     {
-       static Texture2D texture;
+        static Texture2D texture;
         Vector2 position;
         Rectangle rect;
 
         string item;
         string info;
-        
+
 
         public ItemCase(Vector2 position)
         {
             this.position = position;
             item = "Пустая ячейка";
+            rect = new Rectangle();
         }
-       public static void LoadContent()
+        public static void LoadContent()
         {
-       //     Handlers.ContentLoader.Load<Texture2D>("Texture/GUI/ItemCase");
+            texture = ContentLoader.Load<Texture2D>("Textures/GUI/ItemCase");
         }
 
         public void Update()
         {
             rect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
-            showInfo();
-          
 
+            showInfo();
         }
 
         public void Draw(SpriteBatch s)
         {
+            s.Draw(texture, position, Color.White);
             s.DrawString(Main.consoleFont, info, position, Color.Black);
         }
 
@@ -59,7 +60,7 @@ namespace Sparkle.GUI
         {
             if (rect.Contains(Input.mousePoint))
             {
-                info = item;   
+                info = item;
             }
             else
             {

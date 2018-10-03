@@ -30,7 +30,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/GUI/GRItwFa2-ak.jpg
+/build:Textures/GUI/GRItwFa2-ak.jpg;Textures/GUI/ItemCase.jpg
 
 #begin Textures/GUI/textCursor.png
 /importer:TextureImporter
